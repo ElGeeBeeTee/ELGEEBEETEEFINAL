@@ -1,0 +1,74 @@
+
+        <section class="resume-section">
+        <div class="inner-adjust">
+          <div class="pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">User Profile</h1>
+          </div>
+          <!-- Show user data when logged in -->
+          <div class="row" *ngIf="authService.userData as user">
+            <div class="col-md-12">
+              <div class="media">
+                <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
+                  alt="{{user.displayName}}">
+                <div class="media-body">
+                  <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
+                  <p>User ID: <strong>{{user.uid}}</strong></p>
+                  <p>Email: <strong>{{user.email}}</strong></p>
+                  <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+    <div class="container" style="overflow-y:scroll;height:85%">
+        <div class="col-md-12" >
+          <h1 class="text-center py-1">Today Topics</h1>
+          <div class="list-group">
+               <a style="cursor: pointer; background-color: #fff;" class="list-group-item list-group-item-action my-2" *ngFor='let topic of topics; let i = index' [routerLink]='["/forum-item", i]'>
+                <div class="row" style="color:black">
+                    <div class="col-md-2"><h3>{{ topic.myname }}</h3></div>
+                    <div class="col-md-8">{{ topic.content }}</div>
+                    <div class="col-md-2"><a href="#">Join Discussion</a></div>
+                </div>  
+              </a> 
+            </div>
+        </div>
+      </div>
+      <section class="resume-section">
+      <div class="container" style="overflow-y:scroll;height:85%">
+        <div class="col-md-12" >
+          <h1 class="text-center py-1">Add Topic</h1>
+        <form [formGroup]="topicForm" (ngSubmit)="onSubmit()">
+
+          <p>&nbsp;</p>
+      
+        <div class="row" >
+          <div class="col-md-2">&nbsp;</div>
+          <label class="col-md-2" for="myname">
+            Topic Name
+          </label>
+          <input class="col-md-4" id="name" type="text" formControlName="myname">
+        </div>
+        <p>&nbsp;</p>
+      
+        <div class="row">
+          <div class="col-md-2">&nbsp;</div>
+          
+          <label class="col-md-2" for="content">
+            Topic Content
+          </label>
+          <input class="col-md-4" id="content" type="text" formControlName="content">
+        </div>
+        <p>&nbsp;</p>
+      
+        <div class="row">
+          <div class="col-md-5">&nbsp;</div>
+          <div class="col-md-4">&nbsp;&nbsp;<button class="button btn-primary" type="submit">Publish</button></div>
+        
+      </div>
+      </form>
+       </div>
+      </div></section>
+    
+    
