@@ -1,0 +1,76 @@
+
+<div class="p-5">
+    <h1>{{selectedTopic.myname}}</h1>
+
+
+    
+
+    <div class="row">
+        <div class="col-md-12" >
+            <h1 class="text-center py-1">Comments</h1>
+            <div class="list-group">
+                 <a style="cursor: pointer; background-color: #fff;" class="list-group-item list-group-item-action my-2" *ngFor='let comment of selectedTopic.comment; let i = index' [routerLink]='["/forum-item", i]'>
+                  <div class="row" style="color:black">
+                      <div class="col-md-2"><h3>{{ comment.user }}</h3></div>
+                      <div class="col-md-2">{{ comment.content }}</div>
+                  </div>  
+                </a> 
+              </div>
+          </div>
+
+    </div>
+</div>
+
+<div class="container" style="overflow-y:scroll;height:85%">
+    <div class="col-md-12" >
+      <h1 class="text-center py-1">Add Reply</h1>
+    <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+
+      <p>&nbsp;</p>
+  
+    <div class="row" >
+      <div class="col-md-2">&nbsp;</div>
+      <label class="col-md-2" for="myname">
+        Comment
+      </label>
+      <input class="col-md-4" id="name" type="text" formControlName="content">
+    </div>
+    <p>&nbsp;</p>
+  
+    <div class="row">
+      <div class="col-md-2">&nbsp;</div>
+      
+      <label class="col-md-2" for="content">
+        Name
+      </label>
+      <input class="col-md-4" id="content" type="text" formControlName="user">
+    </div>
+    <p>&nbsp;</p>
+  
+    <div class="row">
+      <div class="col-md-5">&nbsp;</div>
+      <div class="col-md-4">&nbsp;&nbsp;<button class="button btn-primary" type="submit">Submit</button></div>
+    
+  </div>
+  </form>
+   </div>
+  </div>
+
+  <!--   <div class="container" style="overflow-y:scroll;height:85%">
+        <div class="col-md-12" >
+          <h1 class="text-center py-1">Comments</h1>
+          <div class="list-group">
+               <a style="cursor: pointer; background-color: #fff;" class="list-group-item list-group-item-action my-2" *ngFor='let comment of selectedTopic.comment; let i = index' [routerLink]='["/forum-item", i]'>
+                <div class="row" style="color:black">
+                    <div class="col-md-2"><h3>{{ comment.content }}</h3></div>
+                    <div class="col-md-8">{{ comment.user }}</div>
+                    <div class="col-md-2"><a href="#">Reply</a></div>
+                </div>  
+              </a> 
+            </div>
+        </div>
+      </div> -->
+
+
+
+
